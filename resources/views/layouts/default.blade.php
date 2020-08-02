@@ -2,7 +2,7 @@
 <html lang="zh">
 <head>
   <title>@yield('title', 'lara1 App') - 菜鸟磨砺计划</title>
-  <link rel="stylesheet" href="/css/app.css">
+  <link rel="stylesheet" href="{{ mix('css/app.css') }}">
 </head>
 <body>
 
