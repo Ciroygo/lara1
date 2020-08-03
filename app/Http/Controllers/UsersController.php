@@ -17,6 +17,13 @@ class UsersController extends Controller
         return view('users.show', compact('user'));
     }
 
+    /**
+     * 用户注册
+     *
+     * @param Request $request
+     *
+     * @return void
+     */
     public function store(Request $request)
     {
         $this->validate($request, [
@@ -27,6 +34,8 @@ class UsersController extends Controller
 
         $user = User::create(['name' => $request->name, 'email' => $request->email, 'password' => bcrypt($request->password)]);
 
+        // 用户登陆
+        Auth::login($user);
         session()->flash('success', '欢迎，您将在这里开启一段新的旅程~');
 
         return redirect()->route('users.show', [$user]);
