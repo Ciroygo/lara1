@@ -9,8 +9,17 @@ class UsersController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth', ['except' => ['show', 'create', 'store']]);
+        // 需要登陆权限， except 除了数组中的方法外，都需要登陆
+        $this->middleware('auth', ['except' => ['index', 'show', 'create', 'store']]);
+
+        // 游客权限， 只有在数组中的游客才能访问
         $this->middleware('guest', ['only' => ['create']]);
+    }
+
+    public function index()
+    {
+        $users = User::paginate(10);
+        return view('users.index', compact('users'));
     }
     public function create()
     {
