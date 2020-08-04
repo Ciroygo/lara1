@@ -30,3 +30,6 @@ Route::delete('logout', 'SessionsController@destroy')->name('logout');
 
 // 更新用户
 Route::get('/users/{user}/edit', 'UsersController@edit')->name('users.edit');
+
+// 激活路由
+Route::get('signup/confirm/{token}', 'UsersController@confirmEmail')->name('confirm_email');

@@ -12,7 +12,7 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(User::class)->times(50)->create();
+        factory(User::class)->times(10000)->create();
         $user = User::find(1);
         $user->name = 'Ciroygo';
         $user->email = 'ciroygo@gmail.com';
